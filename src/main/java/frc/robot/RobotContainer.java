@@ -6,9 +6,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShootCommand;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.IntakeOuttake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -20,16 +22,13 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final DriveTrain m_drivetrain = new DriveTrain();
+  public final DriveTrain m_drivetrain = new DriveTrain();
+  private final IntakeOuttake m_IntakeOuttake = new IntakeOuttake();
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    final XboxController m_joystick = new XboxController(0);
-    final JoystickButton A = new JoystickButton(m_joystick, 1);
-    final JoystickButton B = new JoystickButton(m_joystick, 2);
-    Joystick Joystick = new Joystick(0);
 
     // Configure the button bindings
     configureButtonBindings();
@@ -41,7 +40,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    final XboxController m_xbox = new XboxController(0);
+    final JoystickButton A = new JoystickButton(m_xbox, 1);
+    final JoystickButton B = new JoystickButton(m_xbox, 2);
+
+    B.whileHeld(new IntakeCommand(m_IntakeOuttake));
+    A.whileHeld(new ShootCommand(m_IntakeOuttake));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

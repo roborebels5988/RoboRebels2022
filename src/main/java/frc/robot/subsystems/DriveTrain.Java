@@ -21,7 +21,7 @@ public class DriveTrain extends SubsystemBase {
   private static MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontPWMSparkMax, leftRearPWMSparkMax);
   private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMSparkMax, rightRearPWMSparkMax);
 
-  final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
+  public final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
   public DriveTrain() {
   }
