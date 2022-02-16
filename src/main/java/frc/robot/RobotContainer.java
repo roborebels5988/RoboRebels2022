@@ -4,15 +4,18 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShootCommand;
+import frc.robot.commands.TransformDownCommand;
+import frc.robot.commands.TransformUpCommand;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.IntakeOuttake;
+import frc.robot.subsystems.Transform;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,6 +27,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public final DriveTrain m_drivetrain = new DriveTrain();
   private final IntakeOuttake m_IntakeOuttake = new IntakeOuttake();
+  private final Transform m_Transform = new Transform();
 
   //private final ExampleCommand m_autoCommand = new ExampleCommand();
 
@@ -44,9 +48,15 @@ public class RobotContainer {
     final XboxController m_xbox = new XboxController(0);
     final JoystickButton A = new JoystickButton(m_xbox, 1);
     final JoystickButton B = new JoystickButton(m_xbox, 2);
+    final POVButton UpPOV = new POVButton(m_xbox, 0);
+    final POVButton DownPOV = new POVButton(m_xbox, 180);
 
     B.whileHeld(new IntakeCommand(m_IntakeOuttake));
     A.whileHeld(new ShootCommand(m_IntakeOuttake));
+    
+    UpPOV.whenHeld(new TransformUpCommand(m_Transform));
+    DownPOV.whenHeld(new TransformDownCommand(m_Transform));
+    
   }
 
   /**

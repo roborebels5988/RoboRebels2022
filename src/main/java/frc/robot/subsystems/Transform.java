@@ -4,19 +4,19 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeOuttake extends SubsystemBase {
+public class Transform extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public IntakeOuttake() {}
+  public Transform() {}
+  public final MotorController TransformMotor = new PWMSparkMax(Constants.TRANSFORM_SPARKMAX);
   
-  private static final MotorController LeftIntakeOuttakeMotor = new PWMSparkMax(Constants.LEFT_BALL_INTAKE_OUTTAKE_SPARKMAX);
-  private static final MotorController RightIntakeOuttakeMotor = new PWMSparkMax(Constants.RIGHT_BALL_INTAKE_OUTTAKE_SPARKMAX);
-  public MotorControllerGroup IntakeOuttakeMotors = new MotorControllerGroup(LeftIntakeOuttakeMotor, RightIntakeOuttakeMotor);
+  public final DigitalInput toplimitSwitch = new DigitalInput(Constants.TRANSFORM_TOP_LIMIT_SWITCH);
+  public final DigitalInput bottomlimitSwitch = new DigitalInput(Constants.TRANSFORM_BOTTOM_LIMIT_SWITCH);
 
   @Override
   public void periodic() {

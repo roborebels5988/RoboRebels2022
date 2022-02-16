@@ -22,5 +22,9 @@ public final class Constants {
     // Initailize other motor controllers
     public static final int LEFT_BALL_INTAKE_OUTTAKE_SPARKMAX = 4;
     public static final int RIGHT_BALL_INTAKE_OUTTAKE_SPARKMAX = 5;
+    public static final int TRANSFORM_SPARKMAX = 6;
 
+    // Initialize transform limit switches
+    public static final int TRANSFORM_BOTTOM_LIMIT_SWITCH = 0;
+    public static final int TRANSFORM_TOP_LIMIT_SWITCH = 1;
 }

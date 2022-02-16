@@ -4,21 +4,21 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.IntakeOuttake;
+import frc.robot.subsystems.Transform;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class IntakeCommand extends CommandBase {
+public class TransformUpCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeOuttake m_intakeouttake;
+  private final Transform m_transform;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public IntakeCommand(IntakeOuttake subsystem) {
-    m_intakeouttake = subsystem;
+  public TransformUpCommand(Transform subsystem) {
+    m_transform = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -30,18 +30,20 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intakeouttake.IntakeOuttakeMotors.set(-0.5); // TODO set speed
+    while (m_transform.toplimitSwitch.get() == false){
+      m_transform.TransformMotor.set(0.15); // TODO set speed
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_intakeouttake.IntakeOuttakeMotors.set(0);
+    m_transform.TransformMotor.set(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return m_transform.bottomlimitSwitch.get();
   }
 }
