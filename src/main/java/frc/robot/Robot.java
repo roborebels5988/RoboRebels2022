@@ -81,11 +81,11 @@ public class Robot extends TimedRobot {
     }
   }
   final DriveTrain m_drivetrain = new DriveTrain();
+  Joystick joy = new Joystick(1);
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    Joystick joy = new Joystick(1);
-     m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), joy.getY());
+    m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), joy.getY());
   }
 
   @Override

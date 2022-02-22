@@ -53,7 +53,6 @@ public class RobotContainer {
 
     B.whileHeld(new IntakeCommand(m_IntakeOuttake));
     A.whileHeld(new ShootCommand(m_IntakeOuttake));
-    
     UpPOV.whenHeld(new TransformUpCommand(m_Transform));
     DownPOV.whenHeld(new TransformDownCommand(m_Transform));
     
