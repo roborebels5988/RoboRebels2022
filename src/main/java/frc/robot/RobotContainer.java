@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AutoCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShootCommand;
 import frc.robot.commands.TransformDownCommand;
@@ -29,7 +30,7 @@ public class RobotContainer {
   private final IntakeOuttake m_IntakeOuttake = new IntakeOuttake();
   private final Transform m_Transform = new Transform();
 
-  //private final ExampleCommand m_autoCommand = new ExampleCommand();
+  private final AutoCommand m_autoCommand = new AutoCommand(m_drivetrain, m_IntakeOuttake, m_Transform);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -65,7 +66,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
-    //return m_autoCommand;
+    return m_autoCommand;
   }
 }

@@ -16,7 +16,7 @@ public class IntakeOuttake extends SubsystemBase {
   
   private static final MotorController LeftIntakeOuttakeMotor = new PWMSparkMax(Constants.LEFT_BALL_INTAKE_OUTTAKE_SPARKMAX);
   private static final MotorController RightIntakeOuttakeMotor = new PWMSparkMax(Constants.RIGHT_BALL_INTAKE_OUTTAKE_SPARKMAX);
-  public MotorControllerGroup IntakeOuttakeMotors = new MotorControllerGroup(LeftIntakeOuttakeMotor, RightIntakeOuttakeMotor);
+  public final MotorControllerGroup IntakeOuttakeMotors = new MotorControllerGroup(LeftIntakeOuttakeMotor, RightIntakeOuttakeMotor);
 
   @Override
   public void periodic() {
