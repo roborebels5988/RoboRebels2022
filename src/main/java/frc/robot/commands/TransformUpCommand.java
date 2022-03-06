@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class TransformUpCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Transform m_transform;
 
   /**
@@ -25,12 +25,13 @@ public class TransformUpCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    while (m_transform.toplimitSwitch.get() == false){
+    while (m_transform.toplimitSwitch.get() == false) {
       m_transform.TransformMotor.set(0.15); // TODO set speed
     }
   }

@@ -32,7 +32,7 @@ public class TransformDownCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    while (m_transform.bottomlimitSwitch.get() == false){
+    while (m_transform.bottomlimitSwitch.get() == false) {
       m_transform.TransformMotor.set(-0.15); // TODO set speed
     }
 

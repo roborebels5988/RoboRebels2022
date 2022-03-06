@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class AutoCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final DriveTrain m_drivetrain;
   private final IntakeOuttake m_IntakeOuttake;
   private final Transform m_Transform;
@@ -23,7 +23,7 @@ public class AutoCommand extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
   private final Timer m_timer = new Timer();
-  
+
   public AutoCommand(DriveTrain dt, IntakeOuttake it, Transform tr) {
     m_drivetrain = dt;
     m_IntakeOuttake = it;
@@ -44,14 +44,18 @@ public class AutoCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_timer.get() < 2.0) {
-    m_drivetrain.m_robotDrive.arcadeDrive(1, 0);
+    if (m_timer.get() <= 1.5) {
+      m_drivetrain.m_robotDrive.arcadeDrive(-0.25, 0);
+    } else if (m_timer.get() <= 2.3) {
+      m_drivetrain.m_robotDrive.arcadeDrive(0, 0.25);
+    }
+
   }
-}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

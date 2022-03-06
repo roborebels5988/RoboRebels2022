@@ -12,9 +12,11 @@ import frc.robot.Constants;
 
 public class Transform extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public Transform() {}
+  public Transform() {
+  }
+
   public final MotorController TransformMotor = new PWMSparkMax(Constants.TRANSFORM_SPARKMAX);
-  
+
   public DigitalInput toplimitSwitch = new DigitalInput(Constants.TRANSFORM_TOP_LIMIT_SWITCH);
   public DigitalInput bottomlimitSwitch = new DigitalInput(Constants.TRANSFORM_BOTTOM_LIMIT_SWITCH);
 

@@ -13,13 +13,18 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  private static final MotorController leftFrontPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_LEFT_FRONT_SPARKMAX);
+  private static final MotorController leftFrontPWMVictorSPX = new PWMVictorSPX(
+      Constants.DRIVETRAIN_LEFT_FRONT_SPARKMAX);
   private static final MotorController leftRearPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_LEFT_BACK_SPARKMAX);
-  private static final MotorController rightFrontPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_RIGHT_FRONT_SPARKMAX);
-  private static final MotorController rightRearPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_RIGHT_BACK_SPARKMAX);
+  private static final MotorController rightFrontPWMVictorSPX = new PWMVictorSPX(
+      Constants.DRIVETRAIN_RIGHT_FRONT_SPARKMAX);
+  private static final MotorController rightRearPWMVictorSPX = new PWMVictorSPX(
+      Constants.DRIVETRAIN_RIGHT_BACK_SPARKMAX);
 
-  private static MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontPWMVictorSPX, leftRearPWMVictorSPX);
-  private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMVictorSPX, rightRearPWMVictorSPX);
+  private static MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontPWMVictorSPX,
+      leftRearPWMVictorSPX);
+  private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMVictorSPX,
+      rightRearPWMVictorSPX);
 
   public final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
