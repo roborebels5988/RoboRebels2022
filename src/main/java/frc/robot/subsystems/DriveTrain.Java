@@ -8,18 +8,18 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  private static final MotorController leftFrontPWMSparkMax = new PWMSparkMax(Constants.DRIVETRAIN_LEFT_FRONT_SPARKMAX);
-  private static final MotorController leftRearPWMSparkMax = new PWMSparkMax(Constants.DRIVETRAIN_LEFT_BACK_SPARKMAX);
-  private static final MotorController rightFrontPWMSparkMax = new PWMSparkMax(Constants.DRIVETRAIN_RIGHT_FRONT_SPARKMAX);
-  private static final MotorController rightRearPWMSparkMax = new PWMSparkMax(Constants.DRIVETRAIN_RIGHT_BACK_SPARKMAX);
+  private static final MotorController leftFrontPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_LEFT_FRONT_SPARKMAX);
+  private static final MotorController leftRearPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_LEFT_BACK_SPARKMAX);
+  private static final MotorController rightFrontPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_RIGHT_FRONT_SPARKMAX);
+  private static final MotorController rightRearPWMVictorSPX = new PWMVictorSPX(Constants.DRIVETRAIN_RIGHT_BACK_SPARKMAX);
 
-  private static MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontPWMSparkMax, leftRearPWMSparkMax);
-  private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMSparkMax, rightRearPWMSparkMax);
+  private static MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontPWMVictorSPX, leftRearPWMVictorSPX);
+  private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMVictorSPX, rightRearPWMVictorSPX);
 
   public final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
