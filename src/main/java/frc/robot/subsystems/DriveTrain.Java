@@ -29,6 +29,7 @@ public class DriveTrain extends SubsystemBase {
   public final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
   public DriveTrain() {
+    m_robotDrive.setSafetyEnabled(false); // TODO: FIX THIS ASAP!!!!!
   }
 
   @Override
