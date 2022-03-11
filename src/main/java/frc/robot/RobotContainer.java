@@ -53,16 +53,19 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
     final XboxController m_xbox = new XboxController(0);
+
     final JoystickButton A = new JoystickButton(m_xbox, 1);
     final JoystickButton B = new JoystickButton(m_xbox, 2);
     final POVButton UpPOV = new POVButton(m_xbox, 0);
     final POVButton DownPOV = new POVButton(m_xbox, 180);
+    
 
     B.whileHeld(new IntakeCommand(m_IntakeOuttake));
     A.whileHeld(new ShootCommand(m_IntakeOuttake));
     UpPOV.whenHeld(new TransformUpCommand(m_Transform));
-    DownPOV.whenHeld(new TransformDownCommand(m_Transform));
+    DownPOV.whenHeld(new TransformDownCommand(m_Transform)); 
 
   }
 
