@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.cscore.VideoSink;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -21,9 +24,11 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
   private RobotContainer m_robotContainer;
 
+  UsbCamera FrontCamera;
+  UsbCamera BackCamera;
+  VideoSink server;
   /**
    * This function is run when the robot is first started up and should be used
    * for any
@@ -35,6 +40,10 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+    FrontCamera = CameraServer.startAutomaticCapture(0);
+    BackCamera = CameraServer.startAutomaticCapture(1);
+    server = CameraServer.getServer();
   }
 
   /**
@@ -97,6 +106,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
   }
 
   final DriveTrain m_drivetrain = new DriveTrain();
@@ -105,8 +115,16 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), joy.getY());
+    m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), -joy.getY() * 0.85 ); // 85% rotation speed
+
+    if (joy.getTriggerPressed()) {
+      System.out.println("Setting camera 2");
+      server.setSource(BackCamera);
+  } else if (joy.getTriggerReleased()) {
+      System.out.println("Setting camera 1");
+      server.setSource(FrontCamera);
   }
+}
 
   @Override
   public void testInit() {
