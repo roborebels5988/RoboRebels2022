@@ -44,9 +44,9 @@ public class AutoCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_timer.get() >= 3.5){
-      if (m_timer.get() <= 4.5) {
-        m_drivetrain.m_robotDrive.arcadeDrive(-0.25, 0); //TODO set speed
+    if (m_timer.get() >= 1){
+      if (m_timer.get() <= 4) {
+        m_drivetrain.m_robotDrive.arcadeDrive(0, 0.5); //TODO set speed
       }
       else{
         m_drivetrain.m_robotDrive.arcadeDrive(0,0);
