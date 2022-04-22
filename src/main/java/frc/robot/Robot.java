@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   UsbCamera FrontCamera;
   UsbCamera BackCamera;
   VideoSink server;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any
@@ -40,7 +41,6 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-
     FrontCamera = CameraServer.startAutomaticCapture(0);
     BackCamera = CameraServer.startAutomaticCapture(1);
     server = CameraServer.getServer();
@@ -115,16 +115,19 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), -joy.getY() * 0.85 ); // 85% rotation speed
-
+    if (joy.getRawButtonPressed(2)) {
+      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() * 0.5, -joy.getY() * 0.425); // half speed
+    } else {
+      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), -joy.getY() * 0.85); // 85% rotation speed, normal base speed
+    }
     if (joy.getTriggerPressed()) {
       System.out.println("Setting camera 2");
       server.setSource(BackCamera);
-  } else if (joy.getTriggerReleased()) {
+    } else if (joy.getTriggerReleased()) {
       System.out.println("Setting camera 1");
       server.setSource(FrontCamera);
+    }
   }
-}
 
   @Override
   public void testInit() {
