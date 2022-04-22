@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class AutoCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final DriveTrain m_drivetrain;
   /**
    * Creates a new ExampleCommand.
    *
@@ -22,8 +21,6 @@ public class AutoCommand extends CommandBase {
   private final Timer m_timer = new Timer();
 
   public AutoCommand(DriveTrain dt, IntakeOuttake it, Transform tr) {
-    m_drivetrain = dt;
-    addRequirements(dt);
     addRequirements(it);
     addRequirements(tr);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -41,14 +38,14 @@ public class AutoCommand extends CommandBase {
   public void execute() {
     if (m_timer.get() >= 1){
       if (m_timer.get() <= 3) {
-        m_drivetrain.m_robotDrive.arcadeDrive(0.1, 0.7);
+        DriveTrain.m_robotDrive.arcadeDrive(0.1, 0.7);
       }
       else{
-        m_drivetrain.m_robotDrive.arcadeDrive(0,0);
+        DriveTrain.m_robotDrive.arcadeDrive(0,0);
         }
     }
     else{
-    m_drivetrain.m_robotDrive.arcadeDrive(0,0);
+      DriveTrain.m_robotDrive.arcadeDrive(0,0);
     }
   }
 

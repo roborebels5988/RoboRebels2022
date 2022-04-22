@@ -122,9 +122,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     if (joy.getRawButton(2)) {
-      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() * 0.68, -joy.getY() * 0.8); // half speed
+      DriveTrain.m_robotDrive.arcadeDrive(joy.getX() * 0.68, -joy.getY() * 0.8); // half speed
     } else {
-      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() *0.85, -joy.getY()); // 85% rotation speed, normal base speed
+      DriveTrain.m_robotDrive.arcadeDrive(joy.getX() *0.85, -joy.getY()); // 85% rotation speed, normal base speed
     }
     if (joy.getTriggerPressed()) {
       System.out.println("Setting camera 2");

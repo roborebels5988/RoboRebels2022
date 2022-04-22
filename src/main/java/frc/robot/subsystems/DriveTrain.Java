@@ -26,10 +26,9 @@ public class DriveTrain extends SubsystemBase {
   private static MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontPWMVictorSPX,
       rightRearPWMVictorSPX);
 
-  public final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
+  public static final DifferentialDrive m_robotDrive = new DifferentialDrive(leftMotors, rightMotors);
 
   public DriveTrain() {
-    m_robotDrive.setSafetyEnabled(false); // TODO: FIX THIS ASAP!!!!!
   }
 
   @Override
