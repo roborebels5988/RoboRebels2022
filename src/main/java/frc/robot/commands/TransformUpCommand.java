@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /** An example command that uses an example subsystem. */
 public class TransformUpCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final Transform m_transform;
 
   /**
    * Creates a new ExampleCommand.
@@ -18,7 +17,6 @@ public class TransformUpCommand extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
   public TransformUpCommand(Transform subsystem) {
-    m_transform = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -31,20 +29,20 @@ public class TransformUpCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    while (m_transform.toplimitSwitch.get() == false) {
-      m_transform.TransformMotor.set(0.15); // TODO set speed
+    while (Transform.toplimitSwitch.get() == false) {
+      Transform.TransformMotor.set(0.15); // TODO set speed
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_transform.TransformMotor.set(0);
+    Transform.TransformMotor.set(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_transform.bottomlimitSwitch.get();
+    return Transform.bottomlimitSwitch.get();
   }
 }

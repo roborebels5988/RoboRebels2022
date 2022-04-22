@@ -14,9 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class AutoCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final DriveTrain m_drivetrain;
-  private final IntakeOuttake m_IntakeOuttake;
-  private final Transform m_Transform;
-
   /**
    * Creates a new ExampleCommand.
    *
@@ -26,8 +23,6 @@ public class AutoCommand extends CommandBase {
 
   public AutoCommand(DriveTrain dt, IntakeOuttake it, Transform tr) {
     m_drivetrain = dt;
-    m_IntakeOuttake = it;
-    m_Transform = tr;
     addRequirements(dt);
     addRequirements(it);
     addRequirements(tr);
@@ -45,8 +40,8 @@ public class AutoCommand extends CommandBase {
   @Override
   public void execute() {
     if (m_timer.get() >= 1){
-      if (m_timer.get() <= 4) {
-        m_drivetrain.m_robotDrive.arcadeDrive(0, 0.5); //TODO set speed
+      if (m_timer.get() <= 3) {
+        m_drivetrain.m_robotDrive.arcadeDrive(0.1, 0.7);
       }
       else{
         m_drivetrain.m_robotDrive.arcadeDrive(0,0);

@@ -7,11 +7,14 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoSink;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Transform;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -67,6 +70,9 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    SmartDashboard.putNumber("Match Time", DriverStation.getMatchTime());
+    SmartDashboard.putBoolean("top limit switch", Transform.toplimitSwitch.get());
+    SmartDashboard.putBoolean("bottom limit switch", Transform.bottomlimitSwitch.get());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -115,10 +121,10 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    if (joy.getRawButtonPressed(2)) {
-      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() * 0.5, -joy.getY() * 0.425); // half speed
+    if (joy.getRawButton(2)) {
+      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() * 0.68, -joy.getY() * 0.8); // half speed
     } else {
-      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX(), -joy.getY() * 0.85); // 85% rotation speed, normal base speed
+      m_drivetrain.m_robotDrive.arcadeDrive(joy.getX() *0.85, -joy.getY()); // 85% rotation speed, normal base speed
     }
     if (joy.getTriggerPressed()) {
       System.out.println("Setting camera 2");

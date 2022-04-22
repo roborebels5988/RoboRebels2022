@@ -15,11 +15,9 @@ public class Transform extends SubsystemBase {
   public Transform() {
   }
 
-  public final MotorController TransformMotor = new PWMSparkMax(Constants.TRANSFORM_SPARKMAX);
-
-  public DigitalInput toplimitSwitch = new DigitalInput(Constants.TRANSFORM_TOP_LIMIT_SWITCH);
-  public DigitalInput bottomlimitSwitch = new DigitalInput(Constants.TRANSFORM_BOTTOM_LIMIT_SWITCH);
-
+  public static final MotorController TransformMotor = new PWMSparkMax(Constants.TRANSFORM_SPARKMAX);
+  public static final DigitalInput toplimitSwitch = new DigitalInput(Constants.TRANSFORM_TOP_LIMIT_SWITCH);
+  public static final DigitalInput bottomlimitSwitch = new DigitalInput(Constants.TRANSFORM_BOTTOM_LIMIT_SWITCH);
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
